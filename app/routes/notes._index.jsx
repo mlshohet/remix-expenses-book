@@ -55,12 +55,10 @@ export const action = async ({ request }) => {
 export function CatchBoundary() {
     const caughtResponse = useRouteError();
 
-    console.log("ERR: ", caughtResponse);
-
     const message = caughtResponse.data?.message || 'Data not found';
 
     return (
-        <main>
+        <main className="info-message">
             <p>{message}</p>
         </main>
     )
@@ -68,7 +66,7 @@ export function CatchBoundary() {
 
 export function ErrorBoundary({ error }) {
     return (
-        <main>
+        <main className="error">
             <h1>An error related to your notes occured</h1>
             <p>{error?.message}</p>
             <p>Back to <Link to='/'>safety</Link></p>
@@ -82,3 +80,10 @@ export const links = () => {
         ...noteListLinks(),
     ];
 };
+
+// export function meta() {
+//     return {
+//         title: 'All Notes',
+//         description: 'Manage your notes'
+//     };
+// }
