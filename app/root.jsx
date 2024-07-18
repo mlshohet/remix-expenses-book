@@ -5,51 +5,36 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  Link
+  Link,
 } from "@remix-run/react";
 
-import styles from './styles/main.css';
-import MainNavigation from "./components/MainNavigation";
+import MainHeader from "./components/navigation/MainHeader";
+
+import sharedStyles from "./styles/shared.css";
 
 export function Layout({ children }) {
-    return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <header>
-          <MainNavigation />
-        </header>
-        {children}
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
-  );
-}
-
-export function ErrorBoundary({ error }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
         <Links />
-        <title>An error occurred</title>
       </head>
       <body>
-        <main className="error">
-          <h1>An error ocurred</h1>
-          <p>{error?.message}</p>
-          <p>Back to <Link to='/'>safety</Link></p>
-        </main>
+        <MainHeader />
+        {children}
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -61,8 +46,5 @@ export function ErrorBoundary({ error }) {
 export default function App() {}
 
 export const links = () => {
-  return [
-    { rel: 'stylesheet', href: styles }
-  ];
-}
-
+  return [{ rel: "stylesheet", href: sharedStyles }];
+};
