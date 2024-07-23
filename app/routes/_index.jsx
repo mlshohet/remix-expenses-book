@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import { FaArrowRight, FaDollarSign, FaChartBar } from "react-icons/fa";
+import mongoose from "mongoose";
 
 export default function Index() {
   return (
