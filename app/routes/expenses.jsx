@@ -48,6 +48,5 @@ export const links = () => {
 };
 
 export async function loader() {
-  const expenses = await getExpenses();
-  return json(expenses);
+  return await getExpenses();
 }
